@@ -36,7 +36,7 @@ public class Player
         req.AddJsonBody(body);
 
         var response = client.PostAsync(req);
-        Console.WriteLine(response);
+        System.Console.WriteLine(response);
     }
 
     public void Render()
