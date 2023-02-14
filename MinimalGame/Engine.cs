@@ -4,6 +4,10 @@ using System.Net;
 
 public class Engine
 {
+    // RestClient client = new RestClient("http://10.151.169.12:3000")
+    // {
+
+    // };
     RestClient client = new RestClient("http://10.151.169.12:3000")
     {
 
@@ -49,6 +53,8 @@ public class Engine
     public void Run()
     {
         Raylib.BeginDrawing();
+
+        Raylib.ClearBackground(Color.WHITE);
 
         Paul.Render();
         Samuel.Render();

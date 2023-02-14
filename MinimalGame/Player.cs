@@ -7,8 +7,8 @@ public class Player
     Position pos = new();
     bool isSamuel;
 
-    static string get = "/Get";
-    static string set = "/Set";
+    // static string get = "/Get";
+    // static string set = "/Set";
 
     public Player(bool player)
     {
@@ -35,8 +35,8 @@ public class Player
 
         req.AddJsonBody(body);
 
-        var response = client.Post(req).Content;
-        Console.WriteLine(response);
+        var response = client.Post(req);
+        Console.WriteLine(response.Content);
     }
 
     public void Render()
@@ -46,10 +46,12 @@ public class Player
 
     public void UpdateOnline(ref RestClient client, string player)
     {
-        RestResponse test = client.GetAsync(new(player + get)).Result;
+        RestRequest rr = new($"{player}/Get", Method.Get);
+
+        RestResponse test = client.GetAsync(rr).Result;
+
         Position p = JsonSerializer.Deserialize<Position>(test.Content);
 
-        pos.X = p.X;
-        pos.Y = p.Y;
+        pos = p;
     }
 }
