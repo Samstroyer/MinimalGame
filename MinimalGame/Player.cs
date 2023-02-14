@@ -15,8 +15,8 @@ public class Player
         isSamuel = player;
         pos = new()
         {
-            X = 100,
-            Y = 100
+            x = 100,
+            y = 100
         };
     }
 
@@ -24,24 +24,24 @@ public class Player
     {
         // KeyboardKey key = (KeyboardKey)Raylib.GetKeyPressed();
 
-        if (Raylib.IsKeyDown(KeyboardKey.KEY_W)) pos.Y -= 5;
-        if (Raylib.IsKeyDown(KeyboardKey.KEY_S)) pos.Y += 5;
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_W)) pos.y -= 5;
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_S)) pos.y += 5;
 
-        if (Raylib.IsKeyDown(KeyboardKey.KEY_D)) pos.X += 5;
-        if (Raylib.IsKeyDown(KeyboardKey.KEY_A)) pos.X -= 5;
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_D)) pos.x += 5;
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_A)) pos.x -= 5;
 
         var req = new RestRequest($"{player}/Set");
-        var body = new Position { X = (int)pos.X, Y = (int)pos.Y };
+        var body = new Position { x = (int)pos.x, y = (int)pos.y };
 
         req.AddJsonBody(body);
 
-        var response = client.Post(req);
-        Console.WriteLine(response.Content);
+        var response = client.PostAsync(req);
+        Console.WriteLine(response);
     }
 
     public void Render()
     {
-        Raylib.DrawCircle(pos.X, pos.Y, 10, Color.BLUE);
+        Raylib.DrawCircle(pos.x, pos.y, 10, Color.BLUE);
     }
 
     public void UpdateOnline(ref RestClient client, string player)
