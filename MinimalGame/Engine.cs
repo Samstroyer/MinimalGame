@@ -24,30 +24,26 @@ public class Engine
 
     public Engine()
     {
-        // while (true)
-        // {
-        //     Raylib.BeginDrawing();
-        //     Raylib.ClearBackground(Color.WHITE);
+        while (true)
+        {
+            Raylib.BeginDrawing();
+            Raylib.ClearBackground(Color.WHITE);
 
-        //     Raylib.DrawText("Click LMB for Samuel\nClick RMB for Paul", 100, 100, 24, Color.RED);
+            Raylib.DrawText("Click LMB for Samuel\nClick RMB for Paul", 100, 100, 24, Color.RED);
 
-        //     Raylib.EndDrawing();
+            Raylib.EndDrawing();
 
-        //     if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_LEFT))
-        //     {
-        //         isSamuel = true;
-        //         return;
-        //     }
-        //     else if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_RIGHT))
-        //     {
-        //         isSamuel = false;
-        //         return;
-        //     }
-        // }
-
-        ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
-
-        isSamuel = true;
+            if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_LEFT))
+            {
+                isSamuel = true;
+                return;
+            }
+            else if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_RIGHT))
+            {
+                isSamuel = false;
+                return;
+            }
+        }
     }
 
     public void Run()
