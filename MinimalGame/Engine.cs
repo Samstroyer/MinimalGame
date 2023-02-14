@@ -67,5 +67,7 @@ public class Engine
             Samuel.UpdateOnline(ref client, samuel);
             Paul.UpdateLocal(ref client, paul);
         }
+
+        if (Raylib.GetKeyPressed() == (int)KeyboardKey.KEY_SPACE) isSamuel = !isSamuel;
     }
 }
