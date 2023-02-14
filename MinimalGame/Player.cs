@@ -27,8 +27,8 @@ public class Player
         if (Raylib.IsKeyDown(KeyboardKey.KEY_W)) pos.Y -= 5;
         if (Raylib.IsKeyDown(KeyboardKey.KEY_S)) pos.Y += 5;
 
-        if (Raylib.IsKeyDown(KeyboardKey.KEY_D)) pos.X -= 5;
-        if (Raylib.IsKeyDown(KeyboardKey.KEY_A)) pos.X += 5;
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_D)) pos.X += 5;
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_A)) pos.X -= 5;
 
         var req = new RestRequest($"{player}/Set");
         var body = new Position { X = (int)pos.X, Y = (int)pos.Y };
@@ -46,7 +46,7 @@ public class Player
 
     public void UpdateOnline(ref RestClient client, string player)
     {
-        RestResponse test = client.Get(new(player + get));
+        RestResponse test = client.GetAsync(new(player + get)).Result;
         Position p = JsonSerializer.Deserialize<Position>(test.Content);
 
         pos.X = p.X;
